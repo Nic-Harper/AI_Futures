@@ -1,0 +1,136 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{amsthm}
+\usepackage{booktabs}
+\usepackage{graphicx}  % Add this package
+\usepackage{titling}
+
+\geometry{a4paper, margin=1in}
+
+\title{Foundational Mathematical Concepts for AI Futures}
+\author{Dr James Carney}
+\date{}
+
+% Custom title format
+\pretitle{\begin{center}\includegraphics[width=0.2\textwidth]{Full_logo_black.png}\\[0.5cm]\Huge\bfseries}
+\posttitle{\end{center}}
+\preauthor{\begin{center}\Large}
+\postauthor{\end{center}}
+\predate{\begin{center}\large}
+\postdate{\end{center}}
+\begin{document}
+
+\maketitle
+
+
+\vspace{1cm}
+
+\section*{}
+
+
+
+\subsection*{1. Equation of a Line}
+The equation of a straight line in two-dimensional Cartesian coordinates is given by:
+
+\[
+y = mx + b
+\]
+
+where:
+\begin{itemize}
+    \item $y$ is the dependent variable (vertical axis value)
+    \item $x$ is the independent variable (horizontal axis value)
+    \item $m$ is the \textbf{slope} of the line, representing the rate of change
+    \item $b$ is the \textbf{y-intercept}, the point where the line crosses the y-axis ($x = 0$)
+\end{itemize}
+
+The slope $m$ can be calculated from any two points $(x_1, y_1)$ and $(x_2, y_2)$ on the line:
+\[
+m = \frac{y_2 - y_1}{x_2 - x_1} \quad \text{for } x_1 \neq x_2
+\]
+
+\subsection*{2. Mean Squared Error (MSE)}
+Given a set of $n$ data points with true values $y_i$ and predicted values $\hat{y}_i$, the Mean Squared Error measures the average squared difference between predictions and actual values:
+
+\[
+\text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
+\]
+
+where:
+\begin{itemize}
+    \item $\sum$ (sigma) is the summation operator, meaning "add the results of this operation for every value of $i$ from 1 to $n$ for $y_i$ and $\hat{y}_i$"
+    \item $n$ is the number of data points
+    \item $y_i$ is the actual (true) value of the $i$-th observation
+    \item $\hat{y}_i$ is the predicted value of the $i$-th observation
+    \item $(y_i - \hat{y}_i)$ is the \textbf{residual} (prediction error)
+\end{itemize}
+
+MSE is always non-negative ($\text{MSE} \geq 0$), with smaller values indicating better predictions. Squaring the errors has two main effects:
+\begin{enumerate}
+    \item Ensures all differences are positive
+    \item Gives more weight to larger errors (penalizes outliers)
+\end{enumerate}
+
+\subsection*{3. Power Rule of Differentiation}
+The power rule is a fundamental technique for finding derivatives of polynomial functions. Given a function $f(x) = x^n$ where $n$ is a real number:
+
+\[
+\frac{d}{dx}(x^n) = n x^{n-1}
+\]
+
+\subsubsection*{Geometric Interpretation}
+The derivative $\frac{df}{dx}$ represents the \textbf{slope of the tangent line} to the curve $f(x)$ at a specific point $x_0$:
+
+\[
+\text{Slope at } x_0 = f'(x_0) = \left. \frac{df}{dx} \right|_{x=x_0}
+\]
+
+This slope $f'(x_0)$ is exactly analogous to the coefficient $m$ in the line equation $y = mx + b$, but applied to the tangent line at a specific point on a curve.
+
+\subsubsection*{Examples of the Power Rule}
+\begin{align*}
+    \frac{d}{dx}(x^2) &= 2x^{1} = 2x \\
+    \frac{d}{dx}(x^3) &= 3x^{2} \\
+    \frac{d}{dx}(x) &= 1\\
+    \frac{d}{dx}(\text{constant}) &= 0 \quad \text{(since a constant number has no rate of change by defintition)}
+\end{align*}
+
+\subsubsection*{Visual example}
+For a function $f(x) = x^3 - 6x^2 + 4x + 12$, the derivative is given by:
+\[
+\frac{d}{dx}f(x) = f'(x)= 3x^2 - 12x + 4 
+\]
+
+The derivative function $f'(x)$ gives the slope of the tangent at every point on $f(x)$. See Figure~\ref{fig:function_plot} for a visual illustration of this.
+
+\begin{figure}[h!]  % h! = "here!" (try to place it here)
+    \centering
+    \includegraphics[width=0.8\textwidth]{tangents.jpg}
+    \caption{Graph of $f(x) = x^3 - 6x^2 + 4x + 12$ and two tangents. The derivative  $f'(x)= 3x^2 - 12x + 4$ gives the slope of these tangents}
+    \label{fig:function_plot}
+\end{figure}
+
+\section*{Summary of Relationships}
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Concept} & \textbf{Mathematical Form} & \textbf{Interpretation} \\
+\midrule
+Line Equation & $y = mx + b$ & Describes a straight line \\
+MSE & $\frac{1}{n}\sum (y_i - \hat{y}_i)^2$ & Measures prediction accuracy \\
+Power Rule & $\frac{d}{dx}(x^n) = nx^{n-1}$ & Finds instantaneous rate of change \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{Practical Connection}
+In machine learning, particularly linear regression:
+\begin{enumerate}
+    \item We use the \textbf{line equation} $y = mx + b$ as our prediction model
+    \item We measure prediction quality using \textbf{MSE} as our loss function
+    \item We find optimal $m$ and $b$ values by minimizing MSE, often using derivatives obtained via the \textbf{power rule} (and other differentiation rules)
+\end{enumerate}
+
+\end{document}
